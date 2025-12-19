@@ -3,216 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ONEBEAUTY | Gin's CyberSpace</title>
+    <title>ONEBEAUTY | 护肤行业战略咨询</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Noto+Sans+SC:wght@200;500&display=swap');
+
+        :root {
+            --primary-blue: #00f2ff;
+            --deep-bg: #05050a;
+        }
 
         body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            font-family: 'Orbitron', sans-serif; /* 科技感字体 */
-            background: linear-gradient(45deg, #0f0c29, #302b63, #24243e); /* 初始渐变背景 */
-            background-size: 400% 400%;
-            animation: gradientAnimation 15s ease infinite; /* 动态背景动画 */
-            color: #e0e0e0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden; /* 隐藏滚动条 */
+            margin: 0; padding: 0; height: 100%;
+            background: var(--deep-bg);
+            color: white;
+            font-family: 'Noto Sans SC', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* 科技感背景 */
+        .bg-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 50%, #1a1a3a 0%, #05050a 100%);
+            z-index: -1;
+        }
+
+        /* 动态 Logo */
+        .logo-box {
+            position: absolute; top: 40px; left: 40px;
+            display: flex; align-items: center; gap: 15px;
+        }
+
+        .hexagon-logo {
+            width: 40px; height: 40px;
+            border: 2px solid var(--primary-blue);
             position: relative;
+            animation: rotateLogo 10s linear infinite;
+        }
+        .hexagon-logo::before {
+            content: ''; position: absolute; top: -2px; left: -2px;
+            width: 100%; height: 100%; border: 2px solid white;
+            transform: rotate(45deg);
         }
 
-        /* 动态背景动画 */
-        @keyframes gradientAnimation {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        @keyframes rotateLogo {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
-        .container {
-            text-align: center;
-            z-index: 10; /* 确保内容在背景之上 */
-            animation: fadeInScale 2s ease-out;
-            max-width: 90%;
-            padding: 20px;
+        .main-content {
+            height: 100vh; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; text-align: center;
         }
 
         h1 {
-            font-size: 4.5rem; /* 更大标题 */
-            font-weight: 700;
-            letter-spacing: 12px;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            /* 霓虹渐变文本效果 */
-            background: linear-gradient(90deg, #00c6ff, #0072ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 15px rgba(0, 198, 255, 0.7), 0 0 30px rgba(0, 114, 255, 0.5); /* 霓虹发光 */
-            animation: textGlow 1.5s ease-in-out infinite alternate; /* 文本呼吸效果 */
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4rem; letter-spacing: 15px; margin: 0;
+            background: linear-gradient(to bottom, #fff, #666);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
 
-        @keyframes textGlow {
-            from { text-shadow: 0 0 10px rgba(0, 198, 255, 0.7), 0 0 20px rgba(0, 114, 255, 0.5); }
-            to { text-shadow: 0 0 20px rgba(0, 198, 255, 0.9), 0 0 40px rgba(0, 114, 255, 0.7); }
+        .tagline {
+            color: var(--primary-blue); font-size: 1.2rem;
+            letter-spacing: 5px; margin: 20px 0; font-weight: 200;
         }
 
-        p {
-            font-size: 1.5rem;
-            font-weight: 400;
-            color: #9affff; /* 浅青色文本 */
-            letter-spacing: 4px;
-            animation: typing 3s steps(30, end) forwards, blink-caret .75s step-end infinite;
-            overflow: hidden; /* Ensures the content is not revealed until the animation */
-            white-space: nowrap; /* Keeps the content on a single line */
-            border-right: .15em solid orange; /* The typwriter cursor */
-            width: 0; /* Start with 0 width */
-            margin: 0 auto;
-            max-width: fit-content;
+        /* 咨询师卡片 */
+        .consultant-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 40px; border-radius: 2px;
+            max-width: 600px; margin-top: 50px;
+            transition: 0.5s;
         }
+        .consultant-card:hover { border-color: var(--primary-blue); }
 
-        /* 打字机效果动画 */
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
+        .btn-contact {
+            margin-top: 30px;
+            background: transparent; border: 1px solid white;
+            color: white; padding: 12px 40px; cursor: pointer;
+            font-family: 'Orbitron', sans-serif; transition: 0.4s;
         }
-
-        /* 光标闪烁动画 */
-        @keyframes blink-caret {
-            from, to { border-color: transparent }
-            50% { border-color: #00c6ff; }
-        }
-
-        .line {
-            width: 80px;
-            height: 2px;
-            background-color: #00c6ff;
-            margin: 30px auto;
-            box-shadow: 0 0 10px #00c6ff, 0 0 20px #0072ff; /* 科技感线条发光 */
-            animation: lineFadeIn 2.5s ease-out;
-        }
-
-        @keyframes fadeInScale {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        @keyframes lineFadeIn {
-            from { opacity: 0; width: 0; }
-            to { opacity: 1; width: 80px; }
-        }
-
-        /* 响应式调整 */
-        @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; letter-spacing: 8px; }
-            p { font-size: 1rem; letter-spacing: 2px; }
-            .line { width: 60px; margin: 20px auto; }
-        }
-
-        /* 可以添加一些背景粒子效果 */
-        .particles {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            overflow: hidden;
-            z-index: 5;
-        }
-
-        .particle {
-            position: absolute;
-            background: rgba(0, 198, 255, 0.6);
-            border-radius: 50%;
-            opacity: 0;
-            animation: particleAnimation 15s infinite ease-in-out;
-        }
-
-        /* 动态生成一些粒子 */
-        .particle:nth-child(1) { width: 5px; height: 5px; top: 10%; left: 20%; animation-delay: 0s; }
-        .particle:nth-child(2) { width: 3px; height: 3px; top: 30%; left: 50%; animation-delay: 2s; background: rgba(0, 114, 255, 0.6); }
-        .particle:nth-child(3) { width: 7px; height: 7px; top: 60%; left: 80%; animation-delay: 4s; }
-        .particle:nth-child(4) { width: 4px; height: 4px; top: 80%; left: 10%; animation-delay: 6s; background: rgba(0, 114, 255, 0.6); }
-        .particle:nth-child(5) { width: 6px; height: 6px; top: 20%; left: 90%; animation-delay: 8s; }
-        .particle:nth-child(6) { width: 2px; height: 2px; top: 50%; left: 5%; animation-delay: 10s; background: rgba(0, 114, 255, 0.6); }
-        .particle:nth-child(7) { width: 8px; height: 8px; top: 70%; left: 40%; animation-delay: 12s; }
-
-        @keyframes particleAnimation {
-            0% { transform: translateY(0) translateX(0) scale(0); opacity: 0; }
-            20% { opacity: 1; transform: translateY(-50px) translateX(20px) scale(1); }
-            80% { opacity: 0.5; transform: translateY(-300px) translateX(-50px) scale(0.5); }
-            100% { transform: translateY(-400px) translateX(0) scale(0); opacity: 0; }
+        .btn-contact:hover {
+            background: white; color: black;
+            box-shadow: 0 0 30px rgba(255,255,255,0.5);
         }
     </style>
 </head>
 <body>
+    <div class="bg-overlay"></div>
 
-    <div class="particles">
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
+    <div class="logo-box">
+        <div class="hexagon-logo"></div>
+        <div style="font-family: 'Orbitron'; font-weight: 700;">ONEBEAUTY</div>
     </div>
 
-    <div class="container">
-        <h1>ONEBEAUTY</h1>
-        <div class="product-card">
-    <div class="glass-effect">
-        <h3>PURE & SCIENCE</h3>
-        <p style="font-size: 0.9rem; border: none; width: auto; animation: none;">
-            用科学重新定义美学。<br>
-            专注于活性成分与皮肤屏障修护。
-        </p>
-        <button class="explore-btn">了解更多产品</button>
+    <div class="main-content">
+        <h1>GIN</h1>
+        <div class="tagline">BEAUTY INDUSTRY CONSULTANT</div>
+        
+        <div class="consultant-card">
+            <p style="line-height: 2; font-weight: 200;">
+                基于数据洞察与生物科技趋势，<br>
+                为护肤品牌提供从成分研发到市场溢价的全链路咨询服务。<br>
+                <span style="color: var(--primary-blue)">赋能品牌，重塑美学。</span>
+            </p>
+            <button class="btn-contact">预约咨询 / CONSULT NOW</button>
+        </div>
     </div>
-</div>
-
-<style>
-/* 新增卡片的样式 */
-.product-card {
-    margin-top: 40px;
-    perspective: 1000px;
-}
-
-.glass-effect {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
-    transition: transform 0.5s;
-}
-
-.glass-effect:hover {
-    transform: translateY(-10px) rotateX(5deg);
-}
-
-.explore-btn {
-    margin-top: 20px;
-    background: transparent;
-    border: 1px solid #00c6ff;
-    color: #00c6ff;
-    padding: 10px 25px;
-    border-radius: 30px;
-    cursor: pointer;
-    font-family: 'Orbitron', sans-serif;
-    transition: all 0.3s;
-}
-
-.explore-btn:hover {
-    background: #00c6ff;
-    color: #fff;
-    box-shadow: 0 0 20px #00c6ff;
-}
-</style>
-        <div class="line"></div>
-        <p>Welcome to Gin's CyberSpace.</p>
-    </div>
-
 </body>
 </html>
