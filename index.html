@@ -160,6 +160,56 @@
 
     <div class="container">
         <h1>ONEBEAUTY</h1>
+        <div class="product-card">
+    <div class="glass-effect">
+        <h3>PURE & SCIENCE</h3>
+        <p style="font-size: 0.9rem; border: none; width: auto; animation: none;">
+            用科学重新定义美学。<br>
+            专注于活性成分与皮肤屏障修护。
+        </p>
+        <button class="explore-btn">了解更多产品</button>
+    </div>
+</div>
+
+<style>
+/* 新增卡片的样式 */
+.product-card {
+    margin-top: 40px;
+    perspective: 1000px;
+}
+
+.glass-effect {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+    transition: transform 0.5s;
+}
+
+.glass-effect:hover {
+    transform: translateY(-10px) rotateX(5deg);
+}
+
+.explore-btn {
+    margin-top: 20px;
+    background: transparent;
+    border: 1px solid #00c6ff;
+    color: #00c6ff;
+    padding: 10px 25px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-family: 'Orbitron', sans-serif;
+    transition: all 0.3s;
+}
+
+.explore-btn:hover {
+    background: #00c6ff;
+    color: #fff;
+    box-shadow: 0 0 20px #00c6ff;
+}
+</style>
         <div class="line"></div>
         <p>Welcome to Gin's CyberSpace.</p>
     </div>
